@@ -1,0 +1,44 @@
+{
+    "places": [
+      {"id": "P1", "name": "Start", "tokens": 1},
+      {"id": "P2", "name": "CPU_to_GPU_Memory_Transfer"},
+      {"id": "P3", "name": "GPU_Memory_Access"},
+      {"id": "P4", "name": "Matrix_Computation"},
+      {"id": "P5", "name": "Kernel_Launch"},
+      {"id": "P6", "name": "Intra_Kernel_Synchronization"},
+      {"id": "P7", "name": "Inter_Kernel_Synchronization"},
+      {"id": "P8", "name": "Host_Device_Synchronization"},
+      {"id": "P9", "name": "CPU_Gather_Result"},
+      {"id": "P10", "name": "End"}
+    ],
+    "transitions": [
+      {"id": "T1", "name": "Transfer_to_GPU", "time_delay": 10},
+      {"id": "T2", "name": "Access_GPU_Memory", "time_delay": 5},
+      {"id": "T3", "name": "Compute_Matrix", "time_delay": 15},
+      {"id": "T4", "name": "Launch_Kernel", "time_delay": 2},
+      {"id": "T5", "name": "Sync_Intra_Kernel", "time_delay": 3},
+      {"id": "T6", "name": "Sync_Inter_Kernel", "time_delay": 8},
+      {"id": "T7", "name": "Host_Wait", "time_delay": 6},
+      {"id": "T8", "name": "Transfer_Result_to_CPU", "time_delay": 10}
+    ],
+    "arcs": [
+      {"source": "P1", "target": "T1"},
+      {"source": "T1", "target": "P2"},
+      {"source": "P2", "target": "T2"},
+      {"source": "T2", "target": "P3"},
+      {"source": "P3", "target": "T3"},
+      {"source": "T3", "target": "P4"},
+      {"source": "P4", "target": "T4"},
+      {"source": "T4", "target": "P5"},
+      {"source": "P5", "target": "T5"},
+      {"source": "T5", "target": "P6"},
+      {"source": "P6", "target": "T6"},
+      {"source": "T6", "target": "P7"},
+      {"source": "P7", "target": "T7"},
+      {"source": "T7", "target": "P8"},
+      {"source": "P8", "target": "T8"},
+      {"source": "T8", "target": "P9"},
+      {"source": "P9", "target": "P10"}
+    ]
+  }
+  
